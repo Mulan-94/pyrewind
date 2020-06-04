@@ -53,8 +53,9 @@ def get_release_dates(package):
             else:
                 continue
 
-        sorted_dates = sorted(release_dates)
+        sorted_dates = sorted(list(release_dates.keys()))
         sorted_release_dates = {d: release_dates[d] for d in sorted_dates}
+
         output["package_name"] = name
         output["author"] = author
         output["latest_version"] = curr_version
@@ -106,10 +107,12 @@ def parse_required_release(package, before):
             if curr < before:
                 release = release_dates[da]
                 break
-
         if release is None:
             logging.warning(f"{package} was not released before {before.day}-{before.month}-{before.year}")
-            logging.warning(f"Earliest release is version: {info['latest_version']}, released on: {er.day}-{er.month}-{er.year}")
+
+            logging.warning(f"Earliest release is version: {release_dates[rd_keys[0]]}, released on: {er.day}-{er.month}-{er.year}")
+
+            logging.info(f"Latest release: {info['latest_version']}")
             result = -1
         else:
             result = f"{p_name}=={release}"
