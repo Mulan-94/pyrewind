@@ -21,7 +21,8 @@ versions of the packages in the input requirements' file prior to the
 provided date.
 
 To install PyRewind, type:
-.. code-block:: Python
+
+.. code-block:: python
     pip install pyrewind
     pyrewind -h
 
@@ -46,7 +47,7 @@ You will be presented with the following help menu
                             Including the file extension eg. retro.txt
 
 To run pyrewind, input
-.. code-block:: Python
+.. code-block:: python
 
     pyrewind --input-file current_reqs.txt --output-file old_reqs.txt --before 20-01-2019
 
